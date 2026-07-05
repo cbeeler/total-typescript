@@ -1,4 +1,15 @@
-interface Scores {}
+interface RequiredScores {
+  math: number;
+  english: number;
+  science: number;
+};
+
+interface Scores extends RequiredScores {
+  [key: string]: number;
+};
+
+// So you could do interface Scores extends Record<string, number> but you
+// don't get access to the required if needed.
 
 // @ts-expect-error science is missing!
 const scores: Scores = {
