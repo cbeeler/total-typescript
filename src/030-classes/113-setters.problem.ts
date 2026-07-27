@@ -20,6 +20,10 @@ class CanvasNode {
     this.#x = x;
     this.#y = y;
   }
+
+  set position(position) {
+    this.move(position.x, position.y);
+  };
 }
 
 it("Should be able to move", () => {
