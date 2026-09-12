@@ -1,4 +1,4 @@
-type Result<TResult, TError = Error> =
+type Result<TResult, TError extends { message: string } = Error> =
   | {
       success: true;
       data: TResult;
@@ -10,7 +10,6 @@ type Result<TResult, TError = Error> =
 
 type BadExample = Result<
   { id: string },
-  // @ts-expect-error Should be an object with a message property
   string
 >;
 

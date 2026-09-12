@@ -6,12 +6,14 @@ interface Attributes {
   age: number;
 }
 
-type AttributeGetters = unknown;
+type AttributeGetters<T> = {
+  [K in keyof T]: () => T[K];
+};
 
 type tests = [
   Expect<
     Equal<
-      AttributeGetters,
+      AttributeGetters<Attributes>,
       {
         firstName: () => string;
         lastName: () => string;
